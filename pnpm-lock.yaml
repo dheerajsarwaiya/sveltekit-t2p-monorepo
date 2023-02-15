@@ -46,6 +46,8 @@ importers:
       '@picocss/pico': ^1.5.7
       '@sveltejs/adapter-auto': latest
       '@sveltejs/kit': latest
+      '@trpc/client': ^10.11.1
+      '@trpc/server': ^10.11.1
       autoprefixer: ^10.4.13
       database: workspace:*
       eslint-config-custom: workspace:*
@@ -54,13 +56,17 @@ importers:
       svelte-check: ^2.7.1
       svelte-preprocess: ^4.10.6
       tailwindcss: ^3.2.6
+      trpc-sveltekit: ^3.3.0
       tslib: ^2.3.1
       typescript: ^4.7.2
       ui: workspace:*
       vite: ^4.0.0
     dependencies:
       '@picocss/pico': 1.5.7
+      '@trpc/client': 10.11.1_@trpc+server@10.11.1
+      '@trpc/server': 10.11.1
       database: link:../../packages/database
+      trpc-sveltekit: 3.3.0
       ui: link:../../packages/ui
     devDependencies:
       '@sveltejs/adapter-auto': 2.0.0_@sveltejs+kit@1.6.0
@@ -459,6 +465,18 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@trpc/client/10.11.1_@trpc+server@10.11.1:
+    resolution: {integrity: sha512-6aHY27YomzyUAlKhJE4jJulzDjc6vAKAKoWqAmoYbEEhApvyDrMo52bdYqqsukjxvA/L/uPhjOcPU5OsO+x+pA==}
+    peerDependencies:
+      '@trpc/server': 10.11.1
+    dependencies:
+      '@trpc/server': 10.11.1
+    dev: false
+
+  /@trpc/server/10.11.1:
+    resolution: {integrity: sha512-7FnvuaNsSl6HLloh0a297McS4yjhbqg/bw1h/XOAKduNPUQwXNmJf48X1PAsD8ODtO1Rrjz9TeynJD7uCEn0xQ==}
+    dev: false
 
   /@types/cookie/0.5.1:
     resolution: {integrity: sha512-COUnqfB2+ckwXXSFInsFdOAWQzCCx+a5hq2ruyj+Vjund94RJQd4LG2u9hnvJrTgunKAaax7ancBYlDrNYxA0g==}
@@ -1987,6 +2005,13 @@ packages:
     resolution: {integrity: sha512-eM+pCBxXO/njtF7vdFsHuqb+ElbxqtI4r5EAvk6grfAFyJ6IvWlSkfZ5T9ozC6xWw3Fj1fGoSmrl0gUs46JVIw==}
     engines: {node: '>=6'}
     dev: true
+
+  /trpc-sveltekit/3.3.0:
+    resolution: {integrity: sha512-VVxwSQNuHJYYosFJjhOhAHc8IgMoUNqnRebC52xcZFmVfmIfrcEWx0Y/bJ1OnuVt7oGZFmcX480jOTqT4C1JZA==}
+    dependencies:
+      '@trpc/client': 10.11.1_@trpc+server@10.11.1
+      '@trpc/server': 10.11.1
+    dev: false
 
   /tslib/1.14.1:
     resolution: {integrity: sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==}

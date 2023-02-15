@@ -1,10 +1,37 @@
 <script lang="ts">
   import type { PageData } from './$types';
+  import { page } from '$app/stores';
+  import { trpc } from '$lib/trpc/client';
+
   export let data: PageData;
   $: ({ articles } = data);
+
+  let greeting = '';
+  let loading = false;
+
+  const loadData = async () => {
+    loading = true;
+    greeting = await trpc($page).greeting.query();
+    loading = false;
+  };
 </script>
 
 <div class="w-2/3 flex flex-col ">
+  <div class="w-full">
+  <a
+  href="#load"
+  role="button"
+  class="w-auto inline-flex justify-center items-center rounded-md border border-transparent bg-indigo-600 px-3 py-2 text-sm font-medium leading-4 text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+  aria-busy={loading}
+  on:click|preventDefault={loadData}>Press to load data from tRPC</a
+>
+{#if loading}
+  <div class="text-gray-500">Loading...</div>
+{/if}
+{#if greeting}
+<p class="my-2">{greeting}</p>
+{/if}
+  </div>
   <form action="?/createArticle" method="POST" class="mt-4 mb-4 flex flex-col shadow-md border-2 border-gray-500 p-4 rounded-md bg-gray-200">
     <h3 class="text-lg font-bold">New Article</h3>
     <label for="title"> Title </label>

@@ -13,7 +13,10 @@
   },
   "dependencies": {
     "@picocss/pico": "^1.5.7",
+    "@trpc/client": "^10.11.1",
+    "@trpc/server": "^10.11.1",
     "database": "workspace:*",
+    "trpc-sveltekit": "^3.3.0",
     "ui": "workspace:*"
   },
   "devDependencies": {
