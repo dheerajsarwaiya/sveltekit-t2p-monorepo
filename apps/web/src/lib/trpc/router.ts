@@ -1,14 +1,10 @@
-import type { Context } from './context';
-import { initTRPC } from '@trpc/server';
-// import delay from 'delay';
-
-export const t = initTRPC.context<Context>().create();
-
+import { greetings } from '$lib/trpc/routes/greetings';
+import { t } from '$lib/trpc/t';
+import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server';
 export const router = t.router({
-  greeting: t.procedure.query(async () => {
-    // await delay(500); // 👈 simulate an expensive operation
-    return `Hello tRPC v10 @ ${new Date().toLocaleTimeString()}`;
-  })
+  greetings
 });
 
 export type Router = typeof router;
+export type RouterInputs = inferRouterInputs<Router>;
+export type RouterOutputs = inferRouterOutputs<Router>;

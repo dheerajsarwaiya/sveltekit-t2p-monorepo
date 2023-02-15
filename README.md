@@ -2,6 +2,15 @@
 
 The vision with this repo is to make a starter kit which has all the best practices of t3 architecture (except instead of nextjs, use sveltekit )
 
+## trpc
+
+Check the url http://localhost:3002/api/trpc/greetings.greeting
+
+Used
+
+- https://icflorescu.github.io/trpc-sveltekit
+- https://javascript.plainenglish.io/how-to-use-sveltekit-trpc-3b2e2271f082
+
 ## What's inside?
 
 This Turborepo includes the following packages/apps:
